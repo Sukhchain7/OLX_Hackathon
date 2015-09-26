@@ -1,5 +1,7 @@
 package com.olx.pages;
 
+import java.text.ParseException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -16,16 +18,16 @@ public class SlideMenu {
 		return commonFunctions.checkIfElementPresent(wd, homeText);
 	}
 	
-	public void clickOnHome(WebDriver wd) {
-		commonFunctions.click(wd, homeText);
+	public void clickOnHome(WebDriver wd) throws ParseException {
+		commonFunctions.click(wd, homeText, "Home text in sliding Menu");
 	}
 	
-	public void clickOnBrowseAd(WebDriver wd) {
-		commonFunctions.click(wd, browseAdText);
+	public void clickOnBrowseAd(WebDriver wd) throws ParseException {
+		commonFunctions.click(wd, browseAdText, "On Browse Ad text in sliding menu");
 	}
 	
-	public void clickOnSubmitNewAd(WebDriver wd) {
-		commonFunctions.click(wd, submitAd);
+	public void clickOnSubmitNewAd(WebDriver wd) throws ParseException {
+		commonFunctions.click(wd, submitAd, "Submit new Add button in sliding menu");
 	}
 
 }

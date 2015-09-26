@@ -1,9 +1,11 @@
 package com.olx.test;
 
+import io.appium.java_client.android.AndroidDriver;
+
 import java.net.URL;
+import java.text.ParseException;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -13,12 +15,15 @@ import org.testng.annotations.Test;
 
 import com.olx.pages.SlideMenu;
 import com.olx.pages.SubmitAdPage;
+import com.olx.pages.homePage;
 
 public class Olxtest {
 	WebDriver webDriver;
+	AndroidDriver<?> androidDriver;
 	CommonFunctions commonFunction = new CommonFunctions();
 	SlideMenu sildeMenu = new SlideMenu();
 	SubmitAdPage submitAd = new SubmitAdPage();
+	homePage homePage = new homePage();
 	
 	@BeforeMethod
     public void setUp() throws Exception {
@@ -38,17 +43,23 @@ public class Olxtest {
     }
 	
 //	@Test
-//	public void HomeLoaded(){
-//		sildeMenu.isHomeOptionPresent(webDriver);
-//	}
+	public void HomeLoaded() throws ParseException{
+		sildeMenu.clickOnHome(webDriver);
+		homePage.issubmitAdPresent(webDriver);
+	}
 	
 	@Test
-	public void PostingTest(){
+	public void PostingTest() throws ParseException{
 		sildeMenu.clickOnHome(webDriver);
 		sildeMenu.clickOnSubmitNewAd(webDriver);
 		String[] Categoris = {"Vehicles", "Scooters", "Bajaj"};
-		submitAd.enterAdDetails(webDriver, "Title", Categoris, "I want to sell", "Banglore", "test", "test@mn.i", "xxxxxxxxxx");
+		submitAd.enterAdDetails(androidDriver, webDriver, "Title", Categoris, "I want to sell", "Banglore", "test", "test@mn.i", "xxxxxxxxxx");
 	}
 	
+	@Test
+	public void BrowseAds() throws ParseException{
+		sildeMenu.clickOnBrowseAd(webDriver);
+		
+	}
 
 }

@@ -1,13 +1,13 @@
 package com.olx.pages;
 
-import java.lang.reflect.Array;
+import io.appium.java_client.android.AndroidDriver;
 
-import org.omg.CORBA.PRIVATE_MEMBER;
+import java.text.ParseException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.olx.test.CommonFunctions;
-import com.thoughtworks.selenium.webdriven.commands.Click;
 
 public class SubmitAdPage {
 	
@@ -23,21 +23,31 @@ public class SubmitAdPage {
 	private By submitButtonField = By.name("Submit Ad");
 	
 
-	public void enterAdDetails(WebDriver wd, String title, String[] Category, String description, String location , String name, String email, String phoneNumber ) {
+	public void enterAdDetails(AndroidDriver<?> aD, WebDriver wd, String title, String[] Category, String description, String location , String name, String email, String phoneNumber ) throws ParseException {
 		commonFunctions.enterValue(wd, adTitleField, title);
-		commonFunctions.click(wd, chooseCategoryField);
+		commonFunctions.click(wd, chooseCategoryField, "category text on Submit ad page");
 		for(int i=0; i<=Category.length; i++)
 		{
-			commonFunctions.click(wd, By.name(Category[i]));
+			commonFunctions.click(wd, By.name(Category[i]), Category[i]+" Category not found");
 		}
 		for(int i=0; i<=Category.length; i++)
 		{
 			commonFunctions.navigateUp(wd);
 		}
+		commonFunctions.scrollToElementInLowerPage(aD, descriptionField);
 		commonFunctions.enterValue(wd, descriptionField, description);
+		commonFunctions.scrollToElementInLowerPage(aD, locationField);
+		commonFunctions.click(wd, locationField, "Location option on Submit ad page");
+		commonFunctions.scrollToElementInLowerPage(aD, By.name(location));
+		commonFunctions.click(wd, By.name(location), location+ " under locations");
+		commonFunctions.scrollToElementInLowerPage(aD, nameField);
 		commonFunctions.enterValue(wd, nameField, name);
+		commonFunctions.scrollToElementInLowerPage(aD, emailAddressField);
 		commonFunctions.enterValue(wd, emailAddressField, email);
+		commonFunctions.scrollToElementInLowerPage(aD, phoneNumberField);
 		commonFunctions.enterValue(wd, phoneNumberField, phoneNumber);
+		commonFunctions.scrollToElementInLowerPage(aD, submitButtonField);
+		commonFunctions.click(wd, submitButtonField, "Submit button on Submit ad page");
 		
 	}
 }
