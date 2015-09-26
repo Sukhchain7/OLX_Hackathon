@@ -74,5 +74,9 @@ public class Olxtest {
 		browseAd.clickOnFirstAd(webDriver);
 		
 	}
-
+	
+	@Test
+	public void homeScreenTest() throws ParseException{
+		sildeMenu.clickOnHome(webDriver);
+		
 }
