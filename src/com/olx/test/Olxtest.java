@@ -9,10 +9,12 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.seleniumhq.jetty7.util.log.Log;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import com.olx.pages.BrowseAdPage;
 import com.olx.pages.SlideMenu;
 import com.olx.pages.SubmitAdPage;
 import com.olx.pages.homePage;
@@ -24,6 +26,7 @@ public class Olxtest {
 	SlideMenu sildeMenu = new SlideMenu();
 	SubmitAdPage submitAd = new SubmitAdPage();
 	homePage homePage = new homePage();
+	BrowseAdPage browseAd = new BrowseAdPage();
 	
 	@BeforeMethod
     public void setUp() throws Exception {
@@ -42,10 +45,19 @@ public class Olxtest {
 		//commonFunction.copyFileUsingStream("tmp/appium.log", "olxAppium/logs/appium.log");
     }
 	
-//	@Test
+	@Test
+	@SuppressWarnings("deprecation")
 	public void HomeLoaded() throws ParseException{
 		sildeMenu.clickOnHome(webDriver);
-		homePage.issubmitAdPresent(webDriver);
+		boolean elementOnHomePage = homePage.issubmitAdPresent(webDriver);
+		if(elementOnHomePage)
+		{
+			Log.debug("OLX appium","Smoke Test Passed");
+		}
+		else {
+			Log.debug("OLX appium","Smoke Test failed");
+		}
+		
 	}
 	
 	@Test
@@ -59,6 +71,7 @@ public class Olxtest {
 	@Test
 	public void BrowseAds() throws ParseException{
 		sildeMenu.clickOnBrowseAd(webDriver);
+		browseAd.clickOnFirstAd(webDriver);
 		
 	}
 

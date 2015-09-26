@@ -109,18 +109,7 @@ public class CommonFunctions {
 			e.printStackTrace();
 		}
 	}
-	
-	public void startAppium() throws Exception
-	{
-		//Start the appium server
-		CommandLine command = new CommandLine("/Applications/Appium.app/Contents/Resources/node/bin/node");
-		command.addArgument("/Applications/Appium.app/Contents/Resources/node_modules/appium/bin/appium.js", false);
 
-		DefaultExecuteResultHandler resultHandler = new DefaultExecuteResultHandler();
-		DefaultExecutor executor = new DefaultExecutor();
-		executor.execute(command, resultHandler);
-		Thread.sleep(5000); //Wait for appium server to start
-	}
 	
 	public void navigateUp(WebDriver wd) throws ParseException {
 		By navigate = By.name("Navigate up");
