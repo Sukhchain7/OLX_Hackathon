@@ -78,5 +78,6 @@ public class Olxtest {
 	@Test
 	public void homeScreenTest() throws ParseException{
 		sildeMenu.clickOnHome(webDriver);
-		
+		homePage.NavigateToCategory(androidDriver, webDriver, "Vehicles", "Cars");
+}
 }
