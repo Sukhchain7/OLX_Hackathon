@@ -5,7 +5,9 @@
     <classes>
       <class name="com.olx.test.Olxtest">
         <methods>
-          <include name="tearDown"/>
+          <include name="HomeLoaded"/>
+          <include name="homeScreenTest"/>
+          <include name="BrowseAds"/>
           <include name="PostingTest"/>
           <include name="setUp"/>
         </methods>

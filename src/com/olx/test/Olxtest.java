@@ -59,14 +59,7 @@ public class Olxtest {
 		}
 		
 	}
-	
-	@Test
-	public void PostingTest() throws ParseException{
-		sildeMenu.clickOnHome(webDriver);
-		sildeMenu.clickOnSubmitNewAd(webDriver);
-		String[] Categoris = {"Vehicles", "Scooters", "Bajaj"};
-		submitAd.enterAdDetails(androidDriver, webDriver, "Title", Categoris, "I want to sell", "Banglore", "test", "test@mn.i", "xxxxxxxxxx");
-	}
+
 	
 	@Test
 	public void BrowseAds() throws ParseException{
@@ -80,4 +73,11 @@ public class Olxtest {
 		sildeMenu.clickOnHome(webDriver);
 		homePage.NavigateToCategory(androidDriver, webDriver, "Vehicles", "Cars");
 }
+	@Test
+	public void PostingTest() throws ParseException{
+		sildeMenu.clickOnHome(webDriver);
+		sildeMenu.clickOnSubmitNewAd(webDriver);
+		String[] Categoris = {"Vehicles", "Scooters", "Bajaj"};
+		submitAd.enterAdDetails(androidDriver, webDriver, "Title", Categoris, "I want to sell", "Banglore", "test", "test@mn.i", "xxxxxxxxxx");
+	}
 }
